@@ -1,5 +1,7 @@
 package com.angello.recipeproject.services;
 
+import com.angello.recipeproject.converters.RecipeCommandToRecipe;
+import com.angello.recipeproject.converters.RecipeToRecipeCommand;
 import com.angello.recipeproject.domain.Recipe;
 import com.angello.recipeproject.repositories.RecipeRepository;
 import org.junit.Before;
@@ -22,11 +24,17 @@ public class RecipeServiceImplTest {
     @Mock
     RecipeRepository recipeRepository;
 
+    @Mock
+    RecipeToRecipeCommand recipeToRecipeCommand;
+
+    @Mock
+    RecipeCommandToRecipe recipeCommandToRecipe;
+
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
 
-        recipeService = new RecipeServiceImpl(recipeRepository);
+        recipeService = new RecipeServiceImpl(recipeRepository, recipeCommandToRecipe, recipeToRecipeCommand);
     }
 
     @Test
@@ -56,6 +64,7 @@ public class RecipeServiceImplTest {
         Set<Recipe> recipes = recipeService.getRecipes();
         assertEquals(recipes.size(),1);
         verify(recipeRepository,times(1)).findAll();
+        verify(recipeRepository, never()).findById(anyLong());
     }
 
 }
