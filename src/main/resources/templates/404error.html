@@ -16,11 +16,13 @@
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous" th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
 </head>
+<!--/*@thymesVar id="exception" type="com.angello.recipeproject.exceptions.NotFoundException"*/-->
 <body>
 <div class="container-fluid" style="margin-top: 20px">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <h1>404 Not Found</h1>
+            <p th:text="${exception.getMessage()}"></p>
         </div>
     </div>
 </div>
