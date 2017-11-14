@@ -4,8 +4,16 @@ spring:
     username: sfg_dev_user
     password: Manriquini1x
   jpa:
-    hibernate:
-      ddl-auto: validate
-    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-    database: mysql
-    show-sql: true
+      hibernate:
+        ddl-auto: validate
+      database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+      database: mysql
+      show-sql: true
+#      properties:
+#        javax:
+#          persistence:
+#            schema-generation:
+#              create-source: metadata
+#              scripts:
+#                action: create
+#                create-target: guru_database_create.sql
